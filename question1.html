@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Question1</title>
+
+
+	<meta name="VIEWPORT" content="width=device-width, initial-scale=1.0" />
+
+
+
+</head>
+
+<body class="responsive">
+
+	<b>If Clauses Mixed Exercise: Choose the correct forms of expressions.</b><br><br>
+	<form name="quiz">
+		<p>1. If Jason
+			<select>
+				<option value=""></option>
+				<option value="hadn't left">hadn't left</option>
+				<option value="didn't leave">didn't leave</option>
+				<option value="wouldn't have left">wouldn't have left</option>
+			</select> <span id="q1"></span> the university three years ago, he
+			<select>
+				<option value=""></option>
+				<option value="would be">would be</option>
+				<option value="would have been">would have been</option>
+				<option value="was">was</option>
+			</select> <span id="q2"></span>
+			a doctor now.
+		</p>
+
+		<p>2. We
+			<select>
+				<option value=""></option>
+				<option value="wouldn't be">wouldn't be</option>
+				<option value="wouldn't have been">wouldn't have been</option>
+				<option value="weren't">weren't</option>
+			</select> <span id="q3"></span>
+			lost in the forest now if you
+			<select>
+				<option value=""></option>
+				<option value="would have taken">would have taken</option>
+				<option value="took">took</option>
+				<option value="had taken">had taken</option>
+			</select> <span id="q4"></span>
+			a map with you before we left home.
+		</p>
+
+
+		<br>
+		<input type="button" value="Submit Worksheet" onClick="getScore(this.form)">
+		<input type="reset" value="Clear">
+		<br><br>
+
+		<div id="final" style="display: none">
+		</div>
+
+		Correctness = <input type=text size=15 name="percentage"> <span id="perfectScore"></span><br><br>
+		Correct answers:<br>
+		<textarea name="solutions" wrap="virtual" rows="13" cols="50"></textarea>
+
+	</form>
+
+	<script language="JavaScript">
+		var numQues = 4;
+		answers = new Array(4);
+		answers[0] = "hadn't left"
+		answers[1] = "would be";
+		answers[2] = "wouldn't be";
+		answers[3] = "had taken";
+
+
+		function clearAns() {
+			for (i = 1; i <= numQues; i++) elm = document.getElementById("q" + i.toString()), elm.innerHTML = "";
+			elm = document.getElementById("perfectScore"), elm.innerHTML = ""
+		}
+
+		function getScore(e) {
+			var n = 0;
+			for (i = 0; i < numQues; i++) e.elements[i].value.toLowerCase() == answers[i].toLowerCase() ? (elm = document.getElementById("q" + (i + 1).toString()), elm.innerHTML = "✔", elm.style.background = "chartreuse", n++) : (elm = document.getElementById("q" + (i + 1).toString()), elm.innerHTML = "x", elm.style.background = "red");
+			n == numQues ? (elm = document.getElementById("perfectScore"), elm.innerHTML = "✔", elm.style.background = "chartreuse") : (elm = document.getElementById("perfectScore"), elm.innerHTML = "x", elm.style.background = "red"), e.percentage.value = n + " / " + numQues;
+			var t = "";
+			for (i = 1; i <= numQues / 2; i++) t += i + ". " + answers[i - 1] + " / " + answers[i] + "\r\n";
+			e.solutions.value = t
+		}
+
+	</script>
+
+
+
+</body>
+
+</html>

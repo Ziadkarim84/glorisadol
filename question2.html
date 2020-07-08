@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Question-2</title>
+	<style>
+		td {
+			padding: .5vw;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<h1>Question - 2</h1>
+
+	<table>
+		<p class="question">
+			<tr>
+				<td>1) I <input type="text" id="question1"> <span id="result1"></span> (not/drink) any bear last night</td>
+				<td><span class="button"><input type="submit" value="Check" onclick="check(1)"></span></td>
+			</tr>
+			<tr>
+				<td>[<span id="answer1">.</span>]</td>
+				<td><input type="submit" value="Show" onclick="show(1)"></td>
+			</tr>
+		</p>
+
+
+		<p class="question">
+			<tr>
+				<td>2) She <input type="text" id="question2"> <span id="result2"></span> (get on) the bus in the center of the city</td>
+				<td><span class="button"><input type="submit" value="Check" onclick="check(2)"></span></td>
+			</tr>
+			<tr>
+				<td>[<span id="answer2">.</span>]</td>
+				<td><input type="submit" value="Show" onclick="show(2)"></td>
+			</tr>
+		</p>
+	</table>
+
+
+
+
+
+	<script>
+		var numQues = 2;
+		answers = new Array(2);
+
+		answers[0] = "didn't drink";
+		answers[1] = "got on";
+
+		function check(question_no) {
+
+			var ans = document.getElementById("question" + question_no.toString());
+
+			var result = document.getElementById("result" + question_no.toString());
+
+			if (ans.value.toLowerCase() == answers[question_no - 1].toLowerCase()) {
+
+				result.innerHTML = "✔";
+				result.style.color = "green";
+
+			} else {
+
+				result.innerHTML = "x";
+
+				result.style.color = "red";
+
+			}
+		}
+
+
+		function show(question_no) {
+
+			var ansbox = document.getElementById("answer" + question_no.toString());
+			ansbox.innerHTML = answers[question_no - 1];
+
+		}
+
+	</script>
+</body>
+
+</html>
